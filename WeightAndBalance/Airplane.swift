@@ -59,13 +59,13 @@ struct Mass {
     var weight: Double = 0.0  // In pounds.
     var weightText: String {
         get {
-            return "\(weight)"
+            return String(format: "%0.1f", weight)
         }
     }
     var arm: Double = 0.0  // In inches.
     var armText: String {
         get {
-            return "\(arm)"
+            return String(format: "%0.1f", arm)
         }
     }
     var moment: Double {
@@ -75,7 +75,7 @@ struct Mass {
     }
     var momentText: String {
         get {
-            return "\(weight * arm)"
+            return String(format: "%0.1f", weight * arm)
         }
     }
 }
