@@ -47,6 +47,21 @@ struct Components {
             return String(format: "%0.1f", totalMoment)
         }
     }
+    var centerOfGravity: Double {
+        get {
+            return totalMoment / totalWeight
+        }
+    }
+    var centerOfGravityText: String {
+        get {
+            return String(format: "%0.1f", centerOfGravity)
+        }
+    }
+    var summaryText: String {
+        get {
+            return String(format: "CG = %0.1f inches (limits: 10.5 to 21.5)", centerOfGravity)
+        }
+    }
     
     init() {
         leftMainGear = Mass(weight: 500, arm: -2.0)
@@ -102,7 +117,7 @@ struct Mass {
     }
     var momentText: String {
         get {
-            return String(format: "%0.1f", weight * arm)
+            return String(format: "%0.1f", moment)
         }
     }
 }
