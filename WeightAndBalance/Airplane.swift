@@ -20,6 +20,33 @@ struct Components {
             return leftMainGear.weight + rightMainGear.weight + tailWheel.weight
         }
     }
+    var emptyMoment: Double {
+        get {
+            return leftMainGear.moment + rightMainGear.moment + tailWheel.moment
+        }
+    }
+    var totalWeight: Double {
+        get {
+            return emptyWeight + frontSeat.weight + rearSeat.weight
+            + baggage.weight + fuel.weight
+        }
+    }
+    var totalWeightText: String {
+        get {
+            return String(format: "%0.1f", totalWeight)
+        }
+    }
+    var totalMoment: Double {
+        get {
+            return emptyMoment + frontSeat.moment + rearSeat.moment
+            + baggage.moment + fuel.moment
+        }
+    }
+    var totalMomentText: String {
+        get {
+            return String(format: "%0.1f", totalMoment)
+        }
+    }
     
     init() {
         leftMainGear = Mass(weight: 500, arm: -2.0)

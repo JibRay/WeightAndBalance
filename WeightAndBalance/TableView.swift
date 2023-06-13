@@ -231,6 +231,31 @@ struct TableView: View {
                     .keyboardType(.decimalPad)
                     .border(.blue)
             }
+            HStack { // Totals
+                Text("Totals")
+                    .frame(width: screenWidth * column1, alignment: .trailing)
+                    .background(Color.white)
+                    .font(.system(size: titleFontSize))
+                    .border(.blue)
+                Text(components.totalWeightText)
+                    .frame(width: screenWidth * column2, alignment: .trailing)
+                    .background(Color.white)
+                    .font(.system(size: valueFontSize))
+                    .keyboardType(.decimalPad)
+                    .border(.blue)
+                Text(" ")
+                    .frame(width: screenWidth * column3, alignment: .trailing)
+                    .background(Color.white)
+                    .font(.system(size: valueFontSize))
+                    .keyboardType(.decimalPad)
+                    .border(.blue)
+                Text(components.totalMomentText)
+                    .frame(width: screenWidth * column4, alignment: .trailing)
+                    .background(Color.white)
+                    .font(.system(size: valueFontSize))
+                    .keyboardType(.decimalPad)
+                    .border(.blue)
+            }
         }
     }
 }
