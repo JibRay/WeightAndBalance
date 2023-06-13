@@ -11,6 +11,8 @@
 		0C04D9262A374DDC0040164C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D9252A374DDC0040164C /* ContentView.swift */; };
 		0C04D9282A374DDD0040164C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D9272A374DDD0040164C /* Assets.xcassets */; };
 		0C04D92B2A374DDD0040164C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C04D92A2A374DDD0040164C /* Preview Assets.xcassets */; };
+		0C04D9322A3754F80040164C /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D9312A3754F80040164C /* TableView.swift */; };
+		0C04D9342A376C260040164C /* Airplane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C04D9332A376C260040164C /* Airplane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		0C04D9252A374DDC0040164C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C04D9272A374DDD0040164C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C04D92A2A374DDD0040164C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0C04D9312A3754F80040164C /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		0C04D9332A376C260040164C /* Airplane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airplane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				0C04D9252A374DDC0040164C /* ContentView.swift */,
 				0C04D9272A374DDD0040164C /* Assets.xcassets */,
 				0C04D9292A374DDD0040164C /* Preview Content */,
+				0C04D9312A3754F80040164C /* TableView.swift */,
+				0C04D9332A376C260040164C /* Airplane.swift */,
 			);
 			path = WeightAndBalance;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C04D9262A374DDC0040164C /* ContentView.swift in Sources */,
+				0C04D9342A376C260040164C /* Airplane.swift in Sources */,
+				0C04D9322A3754F80040164C /* TableView.swift in Sources */,
 				0C04D9242A374DDC0040164C /* WeightAndBalanceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
