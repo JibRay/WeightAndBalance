@@ -7,27 +7,23 @@
 
 import SwiftUI
 
+// Table of weight and balance values.
 struct TableView: View {
-    @State var frontSeatWeightText = "0"
     @State var components = Components()
 
     let screenWidth = 0.9 * UIScreen.main.bounds.size.width
     let titleFontSize = 18.0
     let valueFontSize = 18.0
+    
+    // Relative column widths.
     let column1 = 0.31
     let column2 = 0.23
     let column3 = 0.23
     let column4 = 0.23
+    
     let readOnlyColor = Color(red: 0.85, green: 0.85, blue: 0.9)
 
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-    
     var body: some View {
-        
         VStack {
             HStack { // Column titles.
                 Text(" ")

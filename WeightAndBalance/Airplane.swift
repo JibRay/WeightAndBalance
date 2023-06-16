@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// All of the airplane components that contribute to the weight and balance
+// calculation. See notes in init() below.
 struct Components {
     var leftMainGear: Mass
     var rightMainGear: Mass
@@ -63,36 +65,20 @@ struct Components {
         }
     }
     
+    // After doing physical weight measurements, edit the values in this
+    // function. Make sure the arm values match those specified in the
+    // Bearhawk documentation.
     init() {
         leftMainGear = Mass(weightText: "500", arm: -2.0)
         rightMainGear = Mass(weightText: "500", arm: -2.0)
-        tailWheel = Mass(weightText: "75", arm: 205)
+        tailWheel = Mass(weightText: "65", arm: 205)
         frontSeat = Mass(weightText: "0", arm: 9.5)
         rearSeat = Mass(weightText: "0", arm: 41.5)
         baggage = Mass(weightText: "0", arm: 65)
         fuel = Mass(weightText: "0", arm: 22)
-    }
-
-    init(leftMainGear: Mass, rightMainGear: Mass, tailWheel: Mass) {
-        self.leftMainGear = leftMainGear
-        self.rightMainGear = rightMainGear
-        self.tailWheel = tailWheel
-        frontSeat = Mass(weightText: "0", arm: 9.5)
-        rearSeat = Mass(weightText: "0", arm: 41.5)
-        baggage = Mass(weightText: "0", arm: 65)
-        fuel = Mass(weightText: "0", arm: 22)
-    }
-
-    init(leftMainGear: Mass, rightMainGear: Mass, tailWheel: Mass, frontSeat: Mass, rearSeat: Mass, baggage: Mass, fuel: Mass) {
-        self.leftMainGear = leftMainGear
-        self.rightMainGear = rightMainGear
-        self.tailWheel = tailWheel
-        self.frontSeat = frontSeat
-        self.rearSeat = rearSeat
-        self.baggage = baggage
-        self.fuel = fuel
     }
     
+    // Currently unused, but might be useful later.
     func update() {
     }
 }
