@@ -11,7 +11,7 @@ import SwiftUI
 struct TableView: View {
     @State var components = Components()
 
-    let screenWidth = 0.9 * UIScreen.main.bounds.size.width
+    let screenWidth = 0.95 * UIScreen.main.bounds.size.width
     let titleFontSize = 18.0
     let valueFontSize = 18.0
     
