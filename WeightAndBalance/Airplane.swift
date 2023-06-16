@@ -64,23 +64,23 @@ struct Components {
     }
     
     init() {
-        leftMainGear = Mass(weight: 500, arm: -2.0)
-        rightMainGear = Mass(weight: 500, arm: -2.0)
-        tailWheel = Mass(weight: 75, arm: 205)
-        frontSeat = Mass(weight: 0, arm: 9.5)
-        rearSeat = Mass(weight: 0, arm: 41.5)
-        baggage = Mass(weight: 0, arm: 65)
-        fuel = Mass(weight: 0, arm: 22)
+        leftMainGear = Mass(weightText: "500", arm: -2.0)
+        rightMainGear = Mass(weightText: "500", arm: -2.0)
+        tailWheel = Mass(weightText: "75", arm: 205)
+        frontSeat = Mass(weightText: "0", arm: 9.5)
+        rearSeat = Mass(weightText: "0", arm: 41.5)
+        baggage = Mass(weightText: "0", arm: 65)
+        fuel = Mass(weightText: "0", arm: 22)
     }
 
     init(leftMainGear: Mass, rightMainGear: Mass, tailWheel: Mass) {
         self.leftMainGear = leftMainGear
         self.rightMainGear = rightMainGear
         self.tailWheel = tailWheel
-        frontSeat = Mass(weight: 0, arm: 9.5)
-        rearSeat = Mass(weight: 0, arm: 41.5)
-        baggage = Mass(weight: 0, arm: 65)
-        fuel = Mass(weight: 0, arm: 22)
+        frontSeat = Mass(weightText: "0", arm: 9.5)
+        rearSeat = Mass(weightText: "0", arm: 41.5)
+        baggage = Mass(weightText: "0", arm: 65)
+        fuel = Mass(weightText: "0", arm: 22)
     }
 
     init(leftMainGear: Mass, rightMainGear: Mass, tailWheel: Mass, frontSeat: Mass, rearSeat: Mass, baggage: Mass, fuel: Mass) {
@@ -98,10 +98,16 @@ struct Components {
 }
 
 struct Mass {
-    var weight: Double = 0.0  // In pounds.
-    var weightText: String {
+    // Weights are the only values input by the user. Because of the way
+    // TextFields behave, weight's point of truth needs to be the text.
+    var weightText = "0"  // In pounds.
+    var weight: Double {
         get {
-            return String(format: "%0.1f", weight)
+            if let w = Double(weightText) {
+                return w
+            } else {
+                return 0.0
+            }
         }
     }
     var arm: Double = 0.0  // In inches.

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-
 struct TableView: View {
+    @State var frontSeatWeightText = "0"
     @State var components = Components()
 
     let screenWidth = 0.9 * UIScreen.main.bounds.size.width
@@ -135,9 +135,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", value: $components.frontSeat.weight, formatter: formatter, onEditingChanged: {
-                        (changed)
-                        in components.update() })
+                TextField("", text: $components.frontSeat.weightText,
+                          onEditingChanged: {
+                            (changed)
+                            in components.update() })
+                .onTapGesture { components.frontSeat.weightText = ""}
                     .frame(width: screenWidth * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
@@ -164,8 +166,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", value: $components.rearSeat.weight, formatter: formatter, onEditingChanged: { (changed)
-                    in components.update() })
+                TextField("", text: $components.rearSeat.weightText,
+                          onEditingChanged: {
+                            (changed)
+                            in components.update() })
+                    .onTapGesture { components.rearSeat.weightText = "" }
                     .frame(width: screenWidth * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
@@ -192,8 +197,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", value: $components.baggage.weight, formatter: formatter, onEditingChanged: { (changed)
-                    in components.update() })
+                TextField("", text: $components.baggage.weightText,
+                          onEditingChanged: {
+                            (changed)
+                            in components.update() })
+                    .onTapGesture { components.baggage.weightText = "" }
                     .frame(width: screenWidth * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
@@ -220,8 +228,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", value: $components.fuel.weight, formatter: formatter, onEditingChanged: { (changed)
-                    in components.update() })
+                TextField("", text: $components.fuel.weightText,
+                          onEditingChanged: {
+                            (changed)
+                            in components.update() })
+                    .onTapGesture { components.fuel.weightText = "" }
                     .frame(width: screenWidth * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
