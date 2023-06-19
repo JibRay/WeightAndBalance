@@ -80,13 +80,14 @@ struct Components {
     
     // Currently unused, but might be useful later.
     func update() {
+        print("update")
     }
 }
 
 struct Mass {
     // Weights are the only values input by the user. Because of the way
     // TextFields behave, weight's point of truth needs to be the text.
-    var weightText = "0"  // In pounds.
+    @State var weightText = "0"  // In pounds.
     var weight: Double {
         get {
             if let w = Double(weightText) {

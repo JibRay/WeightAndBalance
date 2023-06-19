@@ -7,7 +7,11 @@
 
 import SwiftUI
 
+let screenWidth = 0.95 * UIScreen.main.bounds.size.width
+
 struct ContentView: View {
+    @State var components = Components()
+
     var body: some View {
         ZStack {
             Color(.black).ignoresSafeArea(.all)
@@ -15,7 +19,8 @@ struct ContentView: View {
                 Text("Weight & Balance N46JR")
                     .font(.system(size: 25))
                     .foregroundColor(.white)
-                TableView()
+                TableView(width: screenWidth, components: components)
+                GraphView(width: screenWidth, height: 250, components: components)
                 Spacer()
             }
         }
