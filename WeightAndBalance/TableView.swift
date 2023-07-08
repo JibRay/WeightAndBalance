@@ -9,6 +9,11 @@ import SwiftUI
 
 // Table of weight and balance values.
 struct TableView: View {
+    @State private var frontSeatWeightText: String = "0"
+    @State private var rearSeatWeightText: String = "0"
+    @State private var baggageWeightText: String = "0"
+    @State private var fuelWeightText: String = "0"
+    
     let components: Components?
     let width: CGFloat?
     let titleFontSize = 18.0
@@ -21,10 +26,6 @@ struct TableView: View {
     let column4 = 0.23
     
     let readOnlyColor = Color(red: 0.85, green: 0.85, blue: 0.9)
-    
-    @State private var text: String = "0"
-    
-    //@State var weightText = ["frontSeat": "0", "rearSeat": "0", "baggage": "0", "fuel": "0"]
     
     init(width: CGFloat, components: Components) {
         self.width = width
@@ -139,11 +140,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", text: $text,
+                TextField("", text: $frontSeatWeightText,
                           onEditingChanged: {
                             (changed)
-                            in components!.update() })
-                .onTapGesture { components!.frontSeat.weightText = ""}
+                    in components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText) })
+                .onTapGesture { frontSeatWeightText = ""}
                     .frame(width: width! * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
@@ -170,11 +171,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", text: components!.rearSeat.$weightText,
+                TextField("", text: $rearSeatWeightText,
                           onEditingChanged: {
                             (changed)
-                            in components!.update() })
-                    .onTapGesture { components!.rearSeat.weightText = "" }
+                            in components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText) })
+                    .onTapGesture { rearSeatWeightText = "" }
                     .frame(width: width! * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
@@ -201,11 +202,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", text: components!.baggage.$weightText,
+                TextField("", text: $baggageWeightText,
                           onEditingChanged: {
                             (changed)
-                            in components!.update() })
-                    .onTapGesture { components!.baggage.weightText = "" }
+                            in components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText) })
+                    .onTapGesture { baggageWeightText = "" }
                     .frame(width: width! * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)
@@ -232,11 +233,11 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(.blue)
                     .padding(.trailing, -8)
-                TextField("", text: components!.fuel.$weightText,
+                TextField("", text: $fuelWeightText,
                           onEditingChanged: {
                             (changed)
-                            in components!.update() })
-                    .onTapGesture { components!.fuel.weightText = "" }
+                            in components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText) })
+                    .onTapGesture { fuelWeightText = "" }
                     .frame(width: width! * column2)
                     .multilineTextAlignment(.trailing)
                     .background(Color.white)

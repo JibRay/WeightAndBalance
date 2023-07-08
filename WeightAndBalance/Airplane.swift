@@ -9,7 +9,7 @@ import SwiftUI
 
 // All of the airplane components that contribute to the weight and balance
 // calculation. See notes in init() below.
-struct Components {
+class Components {
     var leftMainGear: Mass
     var rightMainGear: Mass
     var tailWheel: Mass
@@ -78,16 +78,16 @@ struct Components {
         fuel = Mass(weightText: "0", arm: 22)
     }
     
-    // Currently unused, but might be useful later.
-    func update() {
-        print("update")
+    func update(frontSeat: String, rearSeat: String, baggage: String, fuel: String) {
+        self.frontSeat.weightText = frontSeat
+        self.rearSeat.weightText = rearSeat
+        self.baggage.weightText = baggage
+        self.fuel.weightText = baggage
     }
 }
 
 struct Mass {
-    // Weights are the only values input by the user. Because of the way
-    // TextFields behave, weight's point of truth needs to be the text.
-    @State var weightText = "0"  // In pounds.
+    var weightText = "0"  // In pounds.
     var weight: Double {
         get {
             if let w = Double(weightText) {
