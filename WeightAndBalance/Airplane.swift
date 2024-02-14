@@ -9,7 +9,7 @@ import SwiftUI
 
 // All of the airplane components that contribute to the weight and balance
 // calculation. See notes in init() below.
-class Components {
+class Components: ObservableObject {
     var leftMainGear: Mass
     var rightMainGear: Mass
     var tailWheel: Mass
@@ -82,11 +82,12 @@ class Components {
         self.frontSeat.weightText = frontSeat
         self.rearSeat.weightText = rearSeat
         self.baggage.weightText = baggage
-        self.fuel.weightText = baggage
+        self.fuel.weightText = fuel
+        print("frontSeat: \(frontSeat) rearSeat: \(rearSeat) bagage: \(baggage) fuel: \(fuel)")
     }
 }
 
-struct Mass {
+struct Mass  {
     var weightText = "0"  // In pounds.
     var weight: Double {
         get {
