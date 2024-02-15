@@ -25,8 +25,6 @@ struct TableView: View {
     let column3 = 0.23
     let column4 = 0.23
     
-    //let readOnlyColor = Color(red: 0.85, green: 0.85, blue: 0.9)
-    
     init(width: CGFloat, components: Components) {
         self.width = width
         self.components = components
@@ -58,81 +56,18 @@ struct TableView: View {
                     .font(.system(size: titleFontSize))
                     .border(Color(.boarder))
             }
-            HStack { // Main gear left
-                Text("Main Gear L")
-                    .frame(width: width! * column1, alignment: .leading)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: titleFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.leftMainGear.weightText)
-                    .frame(width: width! * column2, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.leftMainGear.armText)
-                    .frame(width: width! * column3, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.leftMainGear.momentText)
-                    .frame(width: width! * column4, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-            }
-            HStack { // Main gear right
-                Text("Main Gear R")
-                    .frame(width: width! * column1, alignment: .leading)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: titleFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.rightMainGear.weightText)
-                    .frame(width: width! * column2, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.rightMainGear.armText)
-                    .frame(width: width! * column3, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.rightMainGear.momentText)
-                    .frame(width: width! * column4, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-            }
-            HStack { // Tailwheel
-                Text("Tailwheel")
-                    .frame(width: width! * column1, alignment: .leading)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: titleFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.tailWheel.weightText)
-                    .frame(width: width! * column2, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.tailWheel.armText)
-                    .frame(width: width! * column3, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-                    .padding(.trailing, -8)
-                Text(components!.tailWheel.momentText)
-                    .frame(width: width! * column4, alignment: .trailing)
-                    .background(Color(.readOnlyBackground))
-                    .font(.system(size: valueFontSize))
-                    .border(Color(.boarder))
-            }
+            FixedRowView(title: "Main Gear L", width: width!,
+                         values: [components!.leftMainGear.weightText,
+                                  components!.leftMainGear.armText,
+                                  components!.leftMainGear.momentText])
+            FixedRowView(title: "Main Gear R", width: width!,
+                         values: [components!.rightMainGear.weightText,
+                                  components!.rightMainGear.armText,
+                                  components!.rightMainGear.momentText])
+            FixedRowView(title: "Tailwheel", width: width!,
+                         values: [components!.tailWheel.weightText,
+                                  components!.tailWheel.armText,
+                                  components!.tailWheel.momentText])
             
             // User input section:
             
@@ -299,29 +234,46 @@ struct TableView: View {
     }
 }
 
-/*
 struct FixedRowView: View {
+    let title: String?
+    let values: [String]?
+    let width: CGFloat?
+    let titleFontSize = 18.0
+    let valueFontSize = 18.0
+    
+    // Relative column widths.
+    let column1 = 0.31
+    let column2 = 0.23
+    let column3 = 0.23
+    let column4 = 0.23
+
+    init(title: String, width: CGFloat, values: [String]) {
+        self.title = title
+        self.width = width
+        self.values = values
+    }
+
     var body: some View {
-        HStack { // Main gear left
-            Text("Main Gear L")
+        HStack {
+            Text(title!)
                 .frame(width: width! * column1, alignment: .leading)
                 .background(Color(.readOnlyBackground))
                 .font(.system(size: titleFontSize))
                 .border(Color(.boarder))
                 .padding(.trailing, -8)
-            Text(components!.leftMainGear.weightText)
+            Text(values![0])
                 .frame(width: width! * column2, alignment: .trailing)
                 .background(Color(.readOnlyBackground))
                 .font(.system(size: valueFontSize))
                 .border(Color(.boarder))
                 .padding(.trailing, -8)
-            Text(components!.leftMainGear.armText)
+            Text(values![1])
                 .frame(width: width! * column3, alignment: .trailing)
                 .background(Color(.readOnlyBackground))
                 .font(.system(size: valueFontSize))
                 .border(Color(.boarder))
                 .padding(.trailing, -8)
-            Text(components!.leftMainGear.momentText)
+            Text(values![2])
                 .frame(width: width! * column4, alignment: .trailing)
                 .background(Color(.readOnlyBackground))
                 .font(.system(size: valueFontSize))
@@ -329,5 +281,4 @@ struct FixedRowView: View {
         }
     }
 }
- */
 
