@@ -39,12 +39,12 @@ struct GraphView: View {
     var body: some View {
         Canvas { context, size in
             context.fill(plotShape(points: safeCG),
-                         with: .color(Color(red: 0.7, green: 0.9, blue: 0.7)))
+                         with: .color(Color(.goodCG)))
             context.stroke(drawCross(at: CGPoint(x: components!.centerOfGravity, y: components!.totalWeight)), with: .color(.black),
                            style: StrokeStyle(lineWidth: 4))
         }
         .frame(width: width, height: height)
-        .background(Color(red: 0.9, green: 0.7, blue: 0.7))
+        .background(Color(.badCG))
     }
     
     // Plot a shape using data coordinates.
