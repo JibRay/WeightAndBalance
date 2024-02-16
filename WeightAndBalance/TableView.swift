@@ -9,11 +9,17 @@ import SwiftUI
 
 // Table of weight and balance values.
 struct TableView: View {
+    
+    // FIXME: can delete these:
     @State private var frontSeatWeightText: String = "0"
     @State private var rearSeatWeightText: String = "0"
     @State private var baggageWeightText: String = "0"
     @State private var fuelWeightText: String = "0"
     
+    @State private var weightText = ["Front seat": "",
+                                     "Rear seat": "",
+                                     "Baggage": "",
+                                     "Fuel": ""]
     let components: Components?
     let width: CGFloat?
     let titleFontSize = 18.0
@@ -68,8 +74,6 @@ struct TableView: View {
                          values: [components!.tailWheel.weightText,
                                   components!.tailWheel.armText,
                                   components!.tailWheel.momentText])
-            
-            // User input section:
             
             HStack { // Front seat
                 Text("Front seat")
@@ -282,3 +286,57 @@ struct FixedRowView: View {
     }
 }
 
+/*
+struct UserInputRowView: View {
+    let title: String?
+    var weights: [String: String]
+    let width: CGFloat?
+    let components: Components?
+    let titleFontSize = 18.0
+    let valueFontSize = 18.0
+    
+    // Relative column widths.
+    let column1 = 0.31
+    let column2 = 0.23
+    let column3 = 0.23
+    let column4 = 0.23
+
+    init(title: String, width: CGFloat, weights: [String: String], components: Components) {
+        self.title = title
+        self.width = width
+        self.weights = weights
+        self.components = components
+    }
+
+    var body: some View {
+        HStack {
+            Text(title!)
+                .frame(width: width! * column1, alignment: .leading)
+                .background(Color(.readOnlyBackground))
+                .font(.system(size: titleFontSize))
+                .border(Color(.boarder))
+                .padding(.trailing, -8)
+            TextField("", text: components!.frontSeat.weightText)
+                .onTapGesture { weights[title!] = ""}
+                .frame(width: width! * column2)
+                .multilineTextAlignment(.trailing)
+                .background(Color.white)
+                .font(.system(size: valueFontSize))
+                .keyboardType(.decimalPad)
+                .border(Color(.boarder))
+                .padding(.trailing, -8)
+            Text(components!.frontSeat.armText)
+                .frame(width: width! * column3, alignment: .trailing)
+                .background(Color(.readOnlyBackground))
+                .font(.system(size: valueFontSize))
+                .border(Color(.boarder))
+                .padding(.trailing, -8)
+            Text(components!.frontSeat.momentText)
+                .frame(width: width! * column4, alignment: .trailing)
+                .background(Color(.readOnlyBackground))
+                .font(.system(size: valueFontSize))
+                .border(Color(.boarder))
+        }.padding(.top, -15.0)
+    }
+}
+*/

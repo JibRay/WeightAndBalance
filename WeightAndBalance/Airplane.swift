@@ -9,6 +9,7 @@ import SwiftUI
 
 // All of the airplane components that contribute to the weight and balance
 // calculation. See notes in init() below.
+@Observable
 class Components: ObservableObject {
     var leftMainGear: Mass
     var rightMainGear: Mass
