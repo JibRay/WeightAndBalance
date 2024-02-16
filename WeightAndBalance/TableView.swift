@@ -231,7 +231,7 @@ struct TableView: View {
                 .font(.system(size: valueFontSize))
                 .border(Color(.boarder))
             
-            Button(" Update ") {
+            Button(" Calculate ") {
                 components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText)
             } 
             .foregroundColor(.white)

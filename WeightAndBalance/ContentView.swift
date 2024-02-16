@@ -20,7 +20,7 @@ struct ContentView: View {
                     .font(.system(size: 25))
                     .foregroundColor(.white)
                 TableView(width: screenWidth, components: components)
-                GraphView(width: screenWidth, height: 200, components: components)
+                GraphView(width: screenWidth, height: 230, components: components)
                 Spacer()
             }
         }
