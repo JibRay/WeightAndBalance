@@ -201,7 +201,7 @@ struct TableView: View {
             }.padding(.top, -15.0)
             
             HStack { // Totals
-                Text("Totals")
+                Text("Totals ")
                     .frame(width: width! * column1, alignment: .trailing)
                     .background(Color(.readOnlyBackground))
                     .font(.system(size: titleFontSize))
@@ -231,9 +231,12 @@ struct TableView: View {
                 .font(.system(size: valueFontSize))
                 .border(Color(.boarder))
             
-            Button("Update") {
+            Button(" Update ") {
                 components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText)
-            } .foregroundColor(.white)
+            } 
+            .foregroundColor(.white)
+            .background(Color(.blue))
+            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -285,58 +288,3 @@ struct FixedRowView: View {
         }
     }
 }
-
-/*
-struct UserInputRowView: View {
-    let title: String?
-    var weights: [String: String]
-    let width: CGFloat?
-    let components: Components?
-    let titleFontSize = 18.0
-    let valueFontSize = 18.0
-    
-    // Relative column widths.
-    let column1 = 0.31
-    let column2 = 0.23
-    let column3 = 0.23
-    let column4 = 0.23
-
-    init(title: String, width: CGFloat, weights: [String: String], components: Components) {
-        self.title = title
-        self.width = width
-        self.weights = weights
-        self.components = components
-    }
-
-    var body: some View {
-        HStack {
-            Text(title!)
-                .frame(width: width! * column1, alignment: .leading)
-                .background(Color(.readOnlyBackground))
-                .font(.system(size: titleFontSize))
-                .border(Color(.boarder))
-                .padding(.trailing, -8)
-            TextField("", text: components!.frontSeat.weightText)
-                .onTapGesture { weights[title!] = ""}
-                .frame(width: width! * column2)
-                .multilineTextAlignment(.trailing)
-                .background(Color.white)
-                .font(.system(size: valueFontSize))
-                .keyboardType(.decimalPad)
-                .border(Color(.boarder))
-                .padding(.trailing, -8)
-            Text(components!.frontSeat.armText)
-                .frame(width: width! * column3, alignment: .trailing)
-                .background(Color(.readOnlyBackground))
-                .font(.system(size: valueFontSize))
-                .border(Color(.boarder))
-                .padding(.trailing, -8)
-            Text(components!.frontSeat.momentText)
-                .frame(width: width! * column4, alignment: .trailing)
-                .background(Color(.readOnlyBackground))
-                .font(.system(size: valueFontSize))
-                .border(Color(.boarder))
-        }.padding(.top, -15.0)
-    }
-}
-*/
