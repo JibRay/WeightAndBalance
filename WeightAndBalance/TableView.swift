@@ -10,16 +10,11 @@ import SwiftUI
 // Table of weight and balance values.
 struct TableView: View {
     
-    // FIXME: can delete these:
     @State private var frontSeatWeightText: String = "0"
     @State private var rearSeatWeightText: String = "0"
     @State private var baggageWeightText: String = "0"
     @State private var fuelWeightText: String = "0"
     
-    @State private var weightText = ["Front seat": "",
-                                     "Rear seat": "",
-                                     "Baggage": "",
-                                     "Fuel": ""]
     let components: Components?
     let width: CGFloat?
     let titleFontSize = 18.0
