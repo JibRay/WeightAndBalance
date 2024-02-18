@@ -4,13 +4,23 @@
 //
 //  Created by Jib Ray on 6/12/23.
 //
+// All of the airplane components that contribute to the weight and balance
+// calculation.
+
+// How to enter new weight and balance data in to this program:
+// 1. Measure the weights at the main gear and tailwheel. Using the arm
+//    data from the Bearhawk documentation, enter these values in the
+//    constants in the init function below.
+// 2. Confirm that minCG, maxCG and maxGrossWeight agree with the
+//    Bearhawk documentation.
 
 import SwiftUI
 
-// All of the airplane components that contribute to the weight and balance
-// calculation. See notes in init() below.
 @Observable
 class Components: ObservableObject {
+    let minCG: Double = 10.5    // In inches.
+    let maxCG: Double = 21.5
+    let maxGrossWeight = 2000.0 // In pounds.
     var leftMainGear: Mass
     var rightMainGear: Mass
     var tailWheel: Mass
@@ -62,13 +72,13 @@ class Components: ObservableObject {
     }
     var summaryText: String {
         get {
-            return String(format: "CG = %0.1f inches (limits: 10.5 to 21.5)", centerOfGravity)
+            return String(format: "CG = %0.1f inches (limits: \(minCG) to \(maxCG))", centerOfGravity)
         }
     }
     
     // After doing physical weight measurements, edit the values in this
     // function. Make sure the arm values match those specified in the
-    // Bearhawk documentation.
+    // Bearhawk documentation. Weights are in pounds, arms are in inches.
     init() {
         leftMainGear = Mass(weightText: "500", arm: -2.0)
         rightMainGear = Mass(weightText: "500", arm: -2.0)
@@ -79,6 +89,7 @@ class Components: ObservableObject {
         fuel = Mass(weightText: "0", arm: 22)
     }
     
+    // Update the weight values in this class.
     func update(frontSeat: String, rearSeat: String, baggage: String, fuel: String) {
         self.frontSeat.weightText = frontSeat
         self.rearSeat.weightText = rearSeat

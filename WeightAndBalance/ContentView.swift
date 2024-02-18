@@ -4,6 +4,7 @@
 //
 //  Created by Jib Ray on 6/12/23.
 //
+// See notes in Airplane.swift.
 
 import SwiftUI
 
@@ -14,15 +15,16 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Color(.black).ignoresSafeArea(.all)
+            Color(.darkGray).ignoresSafeArea(.all)
             VStack {
-                Text("Weight & Balance N46JR")
+                Text("N46JR Weight & Balance")
                     .font(.system(size: 25))
                     .foregroundColor(.white)
                 TableView(width: screenWidth, components: components)
-                GraphView(width: screenWidth, height: 230, components: components)
+                GraphView(width: screenWidth, height: 200, components: components)
                 Spacer()
             }
+            
         }
         /*
         VStack {

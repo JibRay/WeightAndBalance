@@ -36,7 +36,7 @@ struct TableView: View {
             HStack { // Column titles.
                 Text(" ")
                     .frame(width: width! * column1)
-                    .background(Color.black)
+                    .background(Color(.darkGray))
                     .font(.system(size: titleFontSize))
                     .padding(.trailing, -8)
                 Text("Weight")
@@ -219,7 +219,9 @@ struct TableView: View {
                     .background(Color(.readOnlyBackground))
                     .font(.system(size: valueFontSize))
                     .border(Color(.boarder))
-            }.padding(.top, -15.0)
+            }
+            .padding(.top, -15.0)
+            
             Text(components!.summaryText)
                 .frame(width: width!, alignment: .center)
                 .background(Color(.readOnlyBackground))
@@ -229,6 +231,7 @@ struct TableView: View {
             Button(" Calculate ") {
                 components!.update(frontSeat: frontSeatWeightText, rearSeat: rearSeatWeightText, baggage: baggageWeightText, fuel: fuelWeightText)
             } 
+            .padding(5)
             .foregroundColor(.white)
             .background(Color(.blue))
             .frame(maxWidth: .infinity)
